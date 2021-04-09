@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>From Points to Multi-Object 3D Reconstruction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./w3.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1168479-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-1168479-13');
+  </script>
+
+</head>
+
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top" align="center">
+  <div class="w3-row w3-padding w3-black">
+    <div align="center">
+    <div class="w3-col s3"><a href="#publication" class="w3-button w3-block w3-black">Publication</a></div>
+    <div class="w3-col s3"><a href="https://arxiv.org/abs/2012.11575" class="w3-button w3-block w3-black">ArXiv</a></div>
+    <div class="w3-col s3"><a href="#bibtex" class="w3-button w3-block w3-black">BibTeX</a></div>
+  </div>
+  </div>
+</div>
+
+<br><br><br>
+
+<h3 align="center" id="title">From Points to Multi-Object 3D Reconstruction</h3>
+  <p align="center" class="center_text" id="authors">
+    <a target="_blank" href="http://francisengelmann.github.com/">Francis Engelmann</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_blank" href="http://www.krematas.com/">Konstantinos Rematas</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_blank" href="https://www.vision.rwth-aachen.de/person/1/">Bastian Leibe</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_blank" href="https://sites.google.com/view/vittoferrari">Vittorio Ferrari</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  </ul>
+  </p>
+
+  <p class="center_text" align="center">RWTH Aachen University, Computer Vision Group</p>
+  <p class="center_text" align="center">Google Research, Zurich</p>
+
+  <p align="center" id="title">IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2021.</p>
+
+
+<br>
+</span>
+<div class="w3-container" id="paper">
+  <div class="w3-content" style="max-width:850px">
+    <!--<h3><b>Abstract</b></h3>-->
+    <br><center><img src="teaser-multi-object.jpg" style="max-width:75%" /></center><br>
+    <p>
+We propose a method to detect and reconstruct multiple 3D objects from a single RGB image. The key idea is to optimize for detection, alignment and shape jointly over all objects in the RGB image, while focusing on realistic and physically plausible reconstructions. To this end, we propose a keypoint detector that localizes objects as center points and directly predicts all object properties, including 9-DoF bounding boxes and 3D shapes -- all in a single forward pass. The proposed method formulates 3D shape reconstruction as a shape selection problem, i.e. it selects among exemplar shapes from a given database. This makes it agnostic to shape representations, which enables a lightweight reconstruction of realistic and visually-pleasing shapes based on CAD-models, while the training objective is formulated around point clouds and voxel representations. A collision-loss promotes non-intersecting objects, further increasing the reconstruction realism. Given the RGB image, the presented approach performs lightweight reconstruction in a single-stage, it is real-time capable, fully differentiable and end-to-end trainable. Our experiments compare multiple approaches for 9-DoF bounding box estimation, evaluate the novel shape-selection mechanism and compare to recent methods in terms of 3D bounding box estimation and 3D shape reconstruction quality.
+    </p>
+
+    <h3 class="w3-left-align" id="bibtex"><b>BibTeX</b></h3>
+    <pre class="w3-panel w3-leftbar w3-light-grey" style="white-space: pre-wrap; font-family: monospace; font-size: 12px">
+      @article{engelmann2020points,
+        title={From Points to Multi-Object 3D Reconstruction},
+        author={Engelmann, Francis and Rematas, Konstantinos and Leibe, Bastian and Ferrari, Vittorio},
+        journal={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+        year={2020}
+      }
+    </pre>
+  </div>
+
+</div>
+
+</br>
+</br>
+</br>
+
+</body>
+</html>
