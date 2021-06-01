@@ -54,8 +54,8 @@
   <div class="w3-content" style="max-width:850px">
     <!--<h3><b>Abstract</b></h3>-->
     <br><center><img src="teaser-multi-object.jpg" style="max-width:75%" /></center><br>
-    <p>
-We propose a method to detect and reconstruct multiple 3D objects from a single RGB image. The key idea is to optimize for detection, alignment and shape jointly over all objects in the RGB image, while focusing on realistic and physically plausible reconstructions. To this end, we propose a keypoint detector that localizes objects as center points and directly predicts all object properties, including 9-DoF bounding boxes and 3D shapes -- all in a single forward pass. The proposed method formulates 3D shape reconstruction as a shape selection problem, i.e. it selects among exemplar shapes from a given database. This makes it agnostic to shape representations, which enables a lightweight reconstruction of realistic and visually-pleasing shapes based on CAD-models, while the training objective is formulated around point clouds and voxel representations. A collision-loss promotes non-intersecting objects, further increasing the reconstruction realism. Given the RGB image, the presented approach performs lightweight reconstruction in a single-stage, it is real-time capable, fully differentiable and end-to-end trainable. Our experiments compare multiple approaches for 9-DoF bounding box estimation, evaluate the novel shape-selection mechanism and compare to recent methods in terms of 3D bounding box estimation and 3D shape reconstruction quality.
+    <p style="text-align: justify; text-justify: inter-word;">
+We propose a method to detect and reconstruct multiple 3D objects from a single RGB image. The key idea is to optimize for detection, alignment and shape jointly over all objects in the RGB image, while focusing on realistic and physically plausible reconstructions. To this end, we propose a keypoint detector that localizes objects as center points and directly predicts all object properties, including 9-DoF bounding boxes and 3D shapes -- all in a single forward pass.
     </p>
 
     <h3 class="w3-left-align" id="model"><b>Model</b></h3>
@@ -63,17 +63,26 @@ We propose a method to detect and reconstruct multiple 3D objects from a single 
     <center>
       <img src="model.png" style="max-width:100%" />
     </center><br>
+    <p style="text-align: justify; text-justify: inter-word;">
+<b>Overview of the proposed approach.</b> Given a single RGB image, our model detects object centers as key-points in a heatmap. The network directly predicts shape exemplars and 9-DoF bounding boxes jointly for all objects in the scene. The collision loss favors non-intersecting reconstructions. Our method predicts lightweight, realistic and physically plausible reconstructions in a single pass.
+</p>
 
-    <h3 class="w3-left-align" id="poster"><b>Code and Datasets</b></h3>
-    Tensorflow 2 Code <a href="https://github.com/tensorflow/graphics/tree/master/tensorflow_graphics/projects/points_to_3Dobjects">[link]</a> </br>
-    Multi-object synthetic CoReNet dataset <a href="https://github.com/google-research/corenet#datasets">[link]</a>
-    <br>
+<h3 class="w3-left-align" id="model"><b>Results</b> on synthetic images.</h3>
+<br>
+<center>
+  <img src="synthetic_results.jpg" style="max-width:100%" />
+</center>
 
     <h3 class="w3-left-align" id="poster"><b>Poster</b></h3>
     <br>
     <center>
       <a href="https://francisengelmann.github.io/points2objects/cvpr21_points2objects_poster.pdf"><img src="poster.png" style="max-width:75%; border: 0.5px solid gray" /></a>
     </center><br>
+
+    <h3 class="w3-left-align" id="poster"><b>Code and Datasets</b></h3>
+    Tensorflow 2 Code <a href="https://github.com/tensorflow/graphics/tree/master/tensorflow_graphics/projects/points_to_3Dobjects">[link]</a> </br>
+    Multi-object synthetic CoReNet dataset <a href="https://github.com/google-research/corenet#datasets">[link]</a>
+    <br>
 
     <h3 class="w3-left-align" id="bibtex"><b>BibTeX</b></h3>
     <pre class="w3-panel w3-leftbar w3-light-grey" style="white-space: pre-wrap; font-family: monospace; font-size: 12px">
