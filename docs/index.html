@@ -23,7 +23,7 @@
   <div class="w3-row w3-padding w3-black">
     <div align="center">
     <div class="w3-col s3"><a href="#publication" class="w3-button w3-block w3-black">Publication</a></div>
-    <div class="w3-col s3"><a href="https://arxiv.org/abs/2012.11575" class="w3-button w3-block w3-black">ArXiv</a></div>
+    <div class="w3-col s3"><a href="#code" class="w3-button w3-block w3-black">Code</a></div>
     <div class="w3-col s3"><a href="#poster" class="w3-button w3-block w3-black">Poster</a></div>
     <div class="w3-col s3"><a href="#bibtex" class="w3-button w3-block w3-black">BibTeX</a></div>
   </div>
@@ -59,29 +59,38 @@ We propose a method to detect and reconstruct multiple 3D objects from a single 
     </p>
 
     <h3 class="w3-left-align" id="model"><b>Model</b></h3>
-    <br>
     <center>
       <img src="model.png" style="max-width:100%" />
-    </center><br>
+    </center>
     <p style="text-align: justify; text-justify: inter-word;">
-<b>Overview of the proposed approach.</b> Given a single RGB image, our model detects object centers as key-points in a heatmap. The network directly predicts shape exemplars and 9-DoF bounding boxes jointly for all objects in the scene. The collision loss favors non-intersecting reconstructions. Our method predicts lightweight, realistic and physically plausible reconstructions in a single pass.
+Overview of the proposed approach: Given a single RGB image, our model detects object centers as key-points in a heatmap. The network directly predicts shape exemplars and 9-DoF bounding boxes jointly for all objects in the scene. The collision loss favors non-intersecting reconstructions. Our method predicts lightweight, realistic and physically plausible reconstructions in a single pass.
 </p>
 
 <h3 class="w3-left-align" id="model"><b>Results</b> on synthetic images.</h3>
-<br>
 <center>
   <img src="synthetic_results.jpg" style="max-width:100%" />
 </center>
+<br>
+<h3 class="w3-left-align" id="model"><b>Results</b> on real images.</h3>
+<center>
+  <img src="real_results.png" style="max-width:100%" />
+</center>
+<br>
+
+<h3 class="w3-left-align" id="publication"><b>Publication</b></h3>
+<center>
+  <a href="https://arxiv.org/pdf/2012.11575.pdf"><img src="paper.png" style="max-width:100%; border: 0.5px solid gray" /></a>
+</center><br>
 
     <h3 class="w3-left-align" id="poster"><b>Poster</b></h3>
-    <br>
     <center>
-      <a href="https://francisengelmann.github.io/points2objects/cvpr21_points2objects_poster.pdf"><img src="poster.png" style="max-width:75%; border: 0.5px solid gray" /></a>
+      <a href="https://francisengelmann.github.io/points2objects/cvpr21_points2objects_poster.pdf"><img src="poster.png" style="max-width:100%; border: 0.5px solid gray" /></a>
     </center><br>
 
-    <h3 class="w3-left-align" id="poster"><b>Code and Datasets</b></h3>
+    <h3 class="w3-left-align" id="code"><b>Code and Datasets</b></h3>
     Tensorflow 2 Code <a href="https://github.com/tensorflow/graphics/tree/master/tensorflow_graphics/projects/points_to_3Dobjects">[link]</a> </br>
     Multi-object synthetic CoReNet dataset <a href="https://github.com/google-research/corenet#datasets">[link]</a>
+    <br>
     <br>
 
     <h3 class="w3-left-align" id="bibtex"><b>BibTeX</b></h3>
