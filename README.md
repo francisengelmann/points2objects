@@ -1,9 +1,9 @@
 # Points2Objects
 
 
-# Preprocessing
+## Preprocessing
 
-### Download CoReNet dataset
+#### 1) Download CoReNet dataset
 
 ```
 for n in single pairs triplets; do  
@@ -15,7 +15,7 @@ for n in single pairs triplets; do
 done
 ```
 
-### Download ShapeNet dataset
+#### 2) Download ShapeNet dataset
 
 The CoReNet dataset itself does not contain any polygon meshes.
 Instead, it relies on the ```ShapeNetCore.v2``` dataset.
@@ -43,6 +43,10 @@ The 14 ShapeNet classes used in the CoReNet datasets (pairs and triplets) are as
 | 04256520 | sofa 	    |
 | 04379243 | table 	    |
 
-### Generate point clouds and SDFs
+#### 3) Generate point clouds and SDFs
 For each mesh, we sample points from its surface to obtain a point cloud, and we compute a signed distance function SDF.
 
+```bash
+cd datasets
+python preprocess.py
+```
