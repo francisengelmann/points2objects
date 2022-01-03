@@ -3,7 +3,7 @@
 
 # Preprocessing
 
-### Download CoReNet Dataset
+### Download CoReNet dataset
 
 ```
 for n in single pairs triplets; do  
@@ -15,7 +15,7 @@ for n in single pairs triplets; do
 done
 ```
 
-### Download ShapeNet Dataset
+### Download ShapeNet dataset
 
 The CoReNet dataset itself does not contain any polygon meshes.
 Instead, it relies on the ```ShapeNetCore.v2``` dataset.
@@ -28,19 +28,21 @@ The 14 ShapeNet classes used in the CoReNet datasets (pairs and triplets) are as
 
 | Class ID | Class Name |
 |----------|------------|
-| 02818832 | bed 	 |
-| 02876657 | bottle 	 |
-| 02880940 | bowl 	 |
-| 02958343 | car 	 |
-| 03001627 | chair 	 |
-| 03211117 | display 	 |
-| 03467517 | guitar 	 |
-| 03636649 | lamp 	 |
-| 03790512 | motorcycle 	 |
-| 03797390 | mug 	 |
-| 03928116 | piano 	 |
-| 03938244 | pillow 	 |
-| 04256520 | sofa 	 |
-| 04379243 | table 	 |
+| 02818832 | bed 	    |
+| 02876657 | bottle 	|
+| 02880940 | bowl 	    |
+| 02958343 | car 	    |
+| 03001627 | chair 	    |
+| 03211117 | display 	|
+| 03467517 | guitar 	|
+| 03636649 | lamp 	    |
+| 03790512 | motorcycle |
+| 03797390 | mug 	    |
+| 03928116 | piano 	    |
+| 03938244 | pillow 	|
+| 04256520 | sofa 	    |
+| 04379243 | table 	    |
 
-## Creating the point clouds and SDFs
+### Generate point clouds and SDFs
+For each mesh, we sample points from its surface to obtain a point cloud, and we compute a signed distance function SDF.
+
