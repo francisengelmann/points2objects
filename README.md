@@ -5,7 +5,7 @@
 
 #### 1) Download CoReNet dataset
 
-```
+```bash
 for n in single pairs triplets; do  
   for s in train val test; do
     wget "https://storage.googleapis.com/gresearch/corenet/${n}.${s}.tar" \
@@ -19,7 +19,7 @@ done
 
 The CoReNet dataset itself does not contain any polygon meshes.
 Instead, it relies on the ```ShapeNetCore.v2``` dataset.
-```
+```bash
 wget https://shapenet.cs.stanford.edu/shapenet/obj-zip/ShapeNetCore.v2.zip --no-check-certificate
 unzip ShapeNetCore.v2.zip
 ```
@@ -45,8 +45,9 @@ The 14 ShapeNet classes used in the CoReNet datasets (pairs and triplets) are as
 
 #### 3) Generate point clouds and SDFs
 For each mesh, we sample points from its surface to obtain a point cloud, and we compute a signed distance function SDF.
+This steo will take a while to process.
 
 ```bash
 cd datasets
-python preprocess.py
+python preprocess.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --output_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
