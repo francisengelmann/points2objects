@@ -6,13 +6,14 @@ import numpy as np
 import multiprocessing
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string('shapenet_path', '~/datasets/ShapeNetCore.v2', '')
-flags.DEFINE_string('corenet_path', '~/datasets/corenet/data', '')
-flags.DEFINE_string('model_class', '03790512', '')
-flags.DEFINE_string('mesh_name', 'fb5d82c273bdad39359c7139c3be4ec1', '')
-flags.DEFINE_string('output_path', '~/datasets/ShapeNetCore.v2.points_sdf', '')
-flags.DEFINE_boolean('process_all', False, 'Ignore specified model and process all.')
-flags.DEFINE_boolean('show_sdf', True, 'Visualize SDF of specified model for debugging.')
+flags.DEFINE_string('shapenet_path', '~/datasets/ShapeNetCore.v2', 'Path to shapenet dataset.')
+flags.DEFINE_string('corenet_path', '~/datasets/corenet/data', 'Path to corenet dataset.')
+flags.DEFINE_string('output_path', '~/datasets/ShapeNetCore.v2.points_sdf', 'Path to generated points and SDFs.')
+flags.DEFINE_boolean('process_all', True, 'Ignore specified model and process all.')
+flags.DEFINE_string('model_class', '03790512', 'Class of specific model (for debugging).')
+flags.DEFINE_string('mesh_name', 'fb5d82c273bdad39359c7139c3be4ec1', 'Name of specific mesh (for debugging).')
+flags.DEFINE_boolean('show_sdf', False, 'Visualize SDF of specified model (for debugging).')
+flags.DEFINE_integer('num_processes', 24, 'Number of parallel processes.')
 
 
 def prepare_paths(dataset_path, model_class, mesh_name, output_path):
@@ -59,31 +60,17 @@ def main(_):
     if FLAGS.process_all:
         print(f'Processing all meshes...')
         models_per_class = utils.corenet_models(FLAGS.corenet_path)
-        # with open('models_per_class.pickle', 'wb') as handle:
-        #     pickle.dump(models_per_class, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        # return
-        print(f"Number of shapenet models: {len(models_per_class)}")  # 27729 / 27840
-        # with open('models_per_class.pickle', 'rb') as handle:
-        #     print('Loading pickle')
-        #     models_per_class = pickle.load(handle)
-        #     for inputs in sorted(models_per_class):
-        #         print(inputs)
-        #         process_mesh_wrapper(inputs)
-        pool_obj = multiprocessing.Pool(24)
+        print(f"Number of shapenet models: {len(models_per_class)}")
+        pool_obj = multiprocessing.Pool(FLAGS.num_processes)
         pool_obj.map(process_mesh_wrapper, models_per_class)
-    if FLAGS.show_sdf:
+    elif FLAGS.show_sdf:
         print(f'Visualize compute SDF for debugging {FLAGS.model_class} {FLAGS.mesh_name}...')
-        _, _, sdf_path = prepare_paths(FLAGS.shapenet_path,
-                                       FLAGS.model_class,
-                                       FLAGS.mesh_name,
-                                       FLAGS.output_path)
+        _, _, sdf_path = prepare_paths(FLAGS.shapenet_path, FLAGS.model_class, FLAGS.mesh_name, FLAGS.output_path)
         sdf = np.load(sdf_path)
         utils.screenshot(sdf, os.path.join(FLAGS.output_path, f'{FLAGS.model_class}_{FLAGS.mesh_name}'))
     else:
         print(f'Processing mesh {FLAGS.model_class} {FLAGS.mesh_name}...')
-        mesh_path, points_path, sdf_path = prepare_paths(FLAGS.shapenet_path,
-                                                         FLAGS.model_class,
-                                                         FLAGS.mesh_name,
+        mesh_path, points_path, sdf_path = prepare_paths(FLAGS.shapenet_path, FLAGS.model_class, FLAGS.mesh_name,
                                                          FLAGS.output_path)
         process_mesh(mesh_path, points_path, sdf_path)
 
