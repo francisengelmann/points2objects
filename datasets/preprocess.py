@@ -1,9 +1,9 @@
 import os
+import multiprocessing
+import numpy as np
 from absl import app
 from absl import flags
 import utils
-import numpy as np
-import multiprocessing
 
 FLAGS = flags.FLAGS
 flags.DEFINE_string('shapenet_path', '~/datasets/ShapeNetCore.v2', 'Path to shapenet dataset.')
@@ -16,13 +16,13 @@ flags.DEFINE_boolean('show_sdf', False, 'Visualize SDF of specified model (for d
 flags.DEFINE_integer('num_processes', 24, 'Number of parallel processes.')
 
 
-def prepare_paths(dataset_path, model_class, mesh_name, output_path):
+def prepare_paths(dataset_path: str, model_class: str, mesh_name: str, output_path: str) -> (str, str, str):
     """Assemble the necessary paths from the given dataset path and models.
-    :param dataset_path:
-    :param model_class:
-    :param mesh_name:
-    :param output_path:
-    :return:
+    :param dataset_path: Path to the ShapeNet dataset.
+    :param model_class: Class of the specified model.
+    :param mesh_name: Name of the specified mesh.
+    :param output_path: Where to write the generated points and SDFs.
+    :return: Tuple of mesh path, points path and output path.
     """
     mesh_path = os.path.join(dataset_path, model_class, mesh_name, 'models/model_normalized.obj')
     points_path = os.path.join(output_path, model_class, mesh_name, 'models/model_normalized_points.npy')
@@ -30,7 +30,12 @@ def prepare_paths(dataset_path, model_class, mesh_name, output_path):
     return os.path.expanduser(mesh_path), os.path.expanduser(points_path), os.path.expanduser(sdf_path)
 
 
-def process_mesh(mesh_path, points_path, sdf_path):
+def process_mesh(mesh_path: str, points_path: str, sdf_path: str) -> None:
+    """ Samples points from the surface of the specified mesh and generates an SDF.
+    :param mesh_path: Path to the ShapeNet mesh.
+    :param points_path: Path to save the sampled surface points.
+    :param sdf_path: Path to save the generated SDF.
+    """
     points_exists = os.path.exists(points_path)
     sdf_exists = os.path.exists(sdf_path)
     if points_exists and sdf_exists:
@@ -50,7 +55,10 @@ def process_mesh(mesh_path, points_path, sdf_path):
     print('Done: ', mesh_path)
 
 
-def process_mesh_wrapper(inputs):
+def process_mesh_wrapper(inputs: (str, str)) -> None:
+    """Helper function for multiprocessing. Prepares the paths and processes the mesh (compute surface points and sdf).
+    :param inputs: Tuple of the model class and mesh name.
+    """
     model_class, mesh_name = inputs
     mesh_path, points_path, sdf_path = prepare_paths(FLAGS.shapenet_path, model_class, mesh_name, FLAGS.output_path)
     process_mesh(mesh_path, points_path, sdf_path)

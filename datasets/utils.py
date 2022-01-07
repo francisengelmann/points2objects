@@ -79,7 +79,7 @@ def save(data: np.array, path: str) -> None:
     np.save(path, data)
 
 
-def screenshot(sdf, path):
+def screenshot(sdf: np.array, path: str) -> None:
     """Visualize the specified SDF.
     :param sdf: The sdf of the mesh to visualize.
     :param path: The path where to save the visualization.
@@ -100,7 +100,7 @@ def screenshot(sdf, path):
         f.close()
 
 
-def corenet_models(dataset_dir, datasets=None, splits=None):
+def corenet_models(dataset_dir: str, datasets=None, splits=None):
     """ Collect the class and name of all shapenet models in the corenet datasets.
     :param dataset_dir: path to corenet dataset
     :param datasets: list of sub-datasets of corenet
