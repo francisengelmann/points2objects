@@ -53,3 +53,9 @@ python preprocess.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path
 ```
 You can veryify that all files have been succesfully processed using
 `ls ~/datasets/ShapeNetCore.v2.points_sdf/* -l | wc -l` which should show `27881`.
+
+#### 4) Cluster the training shapes and assign cluster labels
+```bash
+cd datasets
+python cluster.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --sdf_path='~/datasets/ShapeNetCore.v2.points_sdf'
+```
