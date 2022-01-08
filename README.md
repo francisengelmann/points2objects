@@ -51,3 +51,5 @@ This steo will take a while to process.
 cd datasets
 python preprocess.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --output_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
+You can veryify that all files have been succesfully processed using
+`ls ~/datasets/ShapeNetCore.v2.points_sdf/* -l | wc -l` which should show `27881`.
