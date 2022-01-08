@@ -1,5 +1,6 @@
 import os
 import json
+import pickle
 import numpy as np
 import trimesh
 from skimage import measure
@@ -129,3 +130,21 @@ def corenet_models(dataset_dir: str, datasets=None, splits=None):
                     for label, filename in zip(scene["mesh_labels"].tolist(), scene["mesh_filenames"].tolist()):
                         models_set.add((label, filename))
     return models_set
+
+
+def save_pkl(data, path: str) -> None:
+    """Save data to pickle file.
+    :param data: The data to store in the pickle file.
+    :param path: The path where to write the pickle file.
+    """
+    with open(path, 'wb') as handle:
+        pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+
+def load_pkl(path: str):
+    """Load data from pickle file.
+    :param path: The path from where to load the data.
+    :return: The data loaded from the pickle file.
+    """
+    with open(path, 'rb') as handle:
+        return pickle.load(handle)
