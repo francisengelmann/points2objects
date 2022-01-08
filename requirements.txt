@@ -3,3 +3,4 @@ numpy~=1.21.5
 tqdm~=4.62.3
 absl
 skimage
+pyviz3d
