@@ -1,5 +1,17 @@
 # Points2Objects
 
+Points2Objects is an approach for reconstructing multiple objects from a single image.
+You can find more information in the following paper:
+[From Points to Multi-Object 3D Reconstruction](https://openaccess.thecvf.com/content/CVPR2021/html/Engelmann_From_Points_to_Multi-Object_3D_Reconstruction_CVPR_2021_paper.html).
+If you find the code or the paper useful, please consider citing our work:
+```bibtex
+@inproceedings{engelmann2020points,
+  author={Engelmann, Francis and Rematas, Konstantinos and Leibe, Bastian and Ferrari, Vittorio},
+  title={{From Points to Multi-Object 3D Reconstruction}},
+  booktitle = {{IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}},
+  year = {2021}
+}
+```
 
 ## Preprocessing
 
@@ -51,11 +63,15 @@ This steo will take a while to process.
 cd datasets
 python preprocess.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --output_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
-You can veryify that all files have been succesfully processed using
+You can veryify that all files have been successfully processed using
 `ls ~/datasets/ShapeNetCore.v2.points_sdf/* -l | wc -l` which should show `27881`.
 
-#### 4) Cluster the training shapes and assign cluster labels
+#### 4) Shape clustering
+This step generates two pickle files (`dict_class_model_clusterId.pkl`, `dict_clusterCenter_class_nearestModel.pkl`) used by the model during training and evaluation.
 ```bash
 cd datasets
 python cluster.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --sdf_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
+
+#### 5) Generating tfrecord files
+WIP
