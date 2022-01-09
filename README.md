@@ -5,9 +5,9 @@ You can find more information in the following paper:
 [From Points to Multi-Object 3D Reconstruction](https://openaccess.thecvf.com/content/CVPR2021/html/Engelmann_From_Points_to_Multi-Object_3D_Reconstruction_CVPR_2021_paper.html).
 If you find the code or the paper useful, please consider citing our work:
 ```bibtex
-@inproceedings{engelmann2020points,
-  author={Engelmann, Francis and Rematas, Konstantinos and Leibe, Bastian and Ferrari, Vittorio},
-  title={{From Points to Multi-Object 3D Reconstruction}},
+@inproceedings{Engelmann21CVPR,
+  author = {Engelmann, Francis and Rematas, Konstantinos and Leibe, Bastian and Ferrari, Vittorio},
+  title = {{From Points to Multi-Object 3D Reconstruction}},
   booktitle = {{IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}},
   year = {2021}
 }
