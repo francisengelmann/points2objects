@@ -56,15 +56,16 @@ The 14 ShapeNet classes used in the CoReNet datasets (pairs and triplets) are as
 | 04379243 | table 	     |
 
 #### 3) Generate point clouds and SDFs
-For each mesh, we sample points from its surface to obtain a point cloud, and we compute a signed distance function SDF.
-This steo will take a while to process.
+For each mesh, we sample points from its surface to obtain a point cloud,
+and we compute a signed distance function (SDF) representation.
+This step will take a while.
+You can keep track of the progress and verify that all files have been successfully processed using
+`ls ~/datasets/ShapeNetCore.v2.points_sdf/* -l | wc -l` which should show `27881`.
 
 ```bash
 cd datasets
 python preprocess.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --output_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
-You can veryify that all files have been successfully processed using
-`ls ~/datasets/ShapeNetCore.v2.points_sdf/* -l | wc -l` which should show `27881`.
 
 #### 4) Shape clustering
 This step generates two pickle files (`dict_class_model_clusterId.pkl`, `dict_clusterCenter_class_nearestModel.pkl`) used by the model during training and evaluation.
