@@ -31,6 +31,7 @@ done
 
 The CoReNet dataset itself does not contain any polygon meshes.
 Instead, it relies on the ```ShapeNetCore.v2``` dataset.
+After registering, you can download the dataset as follows:
 ```bash
 wget https://shapenet.cs.stanford.edu/shapenet/obj-zip/ShapeNetCore.v2.zip --no-check-certificate
 unzip ShapeNetCore.v2.zip
@@ -63,16 +64,16 @@ You can keep track of the progress and verify that all files have been successfu
 `ls ~/datasets/ShapeNetCore.v2.points_sdf/* -l | wc -l` which should show `27881`.
 
 ```bash
-cd datasets
-python preprocess.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --output_path='~/datasets/ShapeNetCore.v2.points_sdf'
+python datasets/preprocess_shapenet.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --output_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
 
 #### 4) Shape clustering
 This step generates two pickle files (`dict_class_model_clusterId.pkl`, `dict_clusterCenter_class_nearestModel.pkl`) used by the model during training and evaluation.
 ```bash
-cd datasets
-python cluster.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --sdf_path='~/datasets/ShapeNetCore.v2.points_sdf'
+python datasets/preprocess_clusters.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --sdf_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
 
 #### 5) Generating tfrecord files
-WIP
+```bash
+python datasets/preprocess_corenet.py
+```
