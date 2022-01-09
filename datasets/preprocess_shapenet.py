@@ -3,7 +3,7 @@ import multiprocessing
 import numpy as np
 from absl import app
 from absl import flags
-import utils
+import datasets.utils as utils
 
 FLAGS = flags.FLAGS
 flags.DEFINE_string('shapenet_path', '~/datasets/ShapeNetCore.v2', 'Path to shapenet dataset.')

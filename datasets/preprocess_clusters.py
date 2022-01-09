@@ -5,7 +5,7 @@ from absl import app
 from absl import flags
 from sklearn.cluster import KMeans
 import pyviz3d.visualizer as viz
-import utils
+import datasets.utils as utils
 
 FLAGS = flags.FLAGS
 flags.DEFINE_string('sdf_path', '~/datasets/ShapeNetCore.v2.points_sdf', 'Prefix of path.')
