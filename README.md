@@ -18,7 +18,7 @@ If you find the code or the paper useful, please consider citing our work:
 #### 1) Download CoReNet dataset
 
 ```bash
-for n in single pairs triplets; do  
+for n in pairs triplets; do  
   for s in train val test; do
     wget "https://storage.googleapis.com/gresearch/corenet/${n}.${s}.tar" \
       -O "data/raw/${n}.${s}.tar" 
