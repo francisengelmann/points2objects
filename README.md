@@ -73,7 +73,5 @@ This step generates two pickle files (`dict_class_model_clusterId.pkl`, `dict_cl
 python datasets/preprocess_clusters.py --shapenet_path='~/datasets/ShapeNetCore.v2' --corenet_path='~/datasets/corenet/data' --sdf_path='~/datasets/ShapeNetCore.v2.points_sdf'
 ```
 
-#### 5) Generating tfrecord files
-```bash
-python datasets/preprocess_corenet.py
-```
+#### 5) Generating the tfrecord files
+Work in progress...
